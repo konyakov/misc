@@ -1,0 +1,67 @@
+
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Создание надежного пароля | КОНЬЯКОВ.ру</title>
+	<meta name="description" content="20 основных вопросов на собеседовании" />
+  </head>
+  <body>
+<p><a href="javascript:history.back();"><small>Вернуться назад</small></a></p>
+<h1>Создание надежного пароля</h1>
+
+<script type="text/javascript">
+function PasGenCountHTML(chars,length,count)
+{
+ document.write("<ol>");
+ for (j=0;j<count;j++)
+     document.write("<li><samp>"+PasGenHTML(chars,length)+"</samp>");
+ document.write("</ol>");
+}
+
+function PasGenHTML(chars,length)
+{
+var res="";
+var r;
+var i;
+  for (i=1;i<=length;i++)
+    {
+     r=Math.floor(Math.random()*chars.length);
+     res=res+chars.substring(r,r+1);
+    }   
+res = res.replace("&","&amp;");
+res = res.replace(">","&gt;");
+res = res.replace("<","&lt;");
+return res
+}
+</script>
+<FORM name=f action="" method=post>
+<p>Символы из которых будет сгенерирован ваш пароль:<br/>
+<input style="WIDTH: 450px" value=1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz name=chars>
+<h3>Варианты:</h3>
+
+<script type="text/javascript">
+function Check() {
+  f.chars.value='';
+  if (f.Csigns.checked) f.chars.value=f.chars.value+'!"№;%:?*()_+=-~/\\<>,.[]{}';
+  if (f.Cnum.checked) f.chars.value=f.chars.value+'1234567890';
+  if (f.Cbig.checked) f.chars.value=f.chars.value+'ZYXWVUTSRQPONMLKJIHGFEDCBA';
+  if (f.Csmall.checked) f.chars.value=f.chars.value+'zyxwvutsrqponmlkjihgfedcba';
+ }
+</script>
+<INPUT onclick=Check(); type=checkbox CHECKED name=Csmall>Маленькие буквы <BR>
+<INPUT onclick=Check(); type=checkbox CHECKED name=Cbig>Заглавные буквы <BR>
+<INPUT onclick=Check(); type=checkbox CHECKED name=Cnum>Цифры <BR>
+<INPUT onclick=Check(); type=checkbox name=Csigns>Знаки <BR>
+Длина пароля: <INPUT size=2 value=10 name=length maxlength="2">(max: 99)<BR>
+Количество паролей: <INPUT size=2 value=10 name=count maxlength="2" > (max: 99)<BR><BR>
+<INPUT onClick="&#13;&#10;document.all.yo.innerHTML='Cписок ваших паролей:<br>';&#13;&#10;c = f.count.value;&#13;&#10;for (i=1;i<=c;i++)&#13;&#10;    document.all.yo.innerHTML+='<samp>'+PasGenHTML(f.chars.value,f.length.value)+'</samp><br>';&#13;&#10;" type=button value="Создать пароль!"> 
+</FORM></p>
+
+<h3>Результат сгенерированных паролей</h3>
+<P id="yo">
+<script type="text/javascript"><!--
+for (j=1;j<=10;j++) document.write("<samp>"+PasGenHTML("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890",10)+"</samp><br>");
+//--></script></p>
+  </body>
+</html>
